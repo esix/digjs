@@ -1,0 +1,15 @@
+{
+  "short_name": "Digger",
+  "name": "Digger Game",
+  "icons": [
+    {
+      "src": "digicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "theme_color": "#000000"
+}

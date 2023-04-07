@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DIGGER Game Online</title>
+  <meta name="description" content="Digger game (Windmill Software 1983)" />
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Digger">
+  <link rel="apple-touch-icon" href="../digicon.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta property="og:image" content="https://www.futrega.org/digger/dig.png">
+
+  <style>
+    html { width: 100%; height: 100%; }
+    body { background: #000; color: #bbb; font: 16px/1.4 arial, sans-serif; padding: 0; margin: 0; height: 100%; width: 100%; }
+
+    body {
+     -webkit-user-select: none;
+     -webkit-tap-highlight-color: rgba(0,0,0,0);
+     -webkit-text-size-adjust: 100%;
+    }
+
+    a { color: inherit; text-decoration-skip-ink: none; }
+
+    #dcont { width: 100%; height: 100%; max-height: 600px; position: absolute; top: 50%; transform: translateY(-50%); overflow: hidden; }
+
+    #vkeys { display: none; position: absolute; width: 100%; bottom: 60px; font-size: 52px; opacity: .5; font-family: courier new, monospace; }
+    #vkeys b { background: #666; color: #fff; text-align: center; width: 1.4em; height: 1.3em; position: absolute; display: block; border-radius: 6px; }
+    .vkvis #vkeys { display: block; }
+
+    /* cursor pointer for ios click event to bubble up to document */
+    html.pfix body { position: fixed; left: 0; top: 0; cursor: pointer; }
+  </style>
+
+</head>
+
+<body>
+  <div id="dcont" style="text-align: center;"></div>
+  <div id="vkeys" onclick="rqfs(); if(typeof(fuinput)=='function') fuinput(); return false;" ontouchmove="return false;">
+    <b id="au" style="left: 1.0em; bottom: 1.4em;">▴</b>
+    <b id="ad" style="left: 1.0em; bottom: 0; ">▾</b>
+    <b id="af" style="left: 2.5em; bottom: 1.4em;">*</b>
+    <b id="arev1" style="left: 2.5em; bottom: 0;">r</b>
+    <b id="ag" style="right: 1.0em; bottom: 1.4em;">*</b>
+    <b id="al" style="right: 2.5em; bottom: 0; ">◂</b>
+    <b id="arev2" style="right: 2.5em; bottom: 1.4em; ">r</b>
+    <b id="ar" style="right: 1.0em; bottom: 0; ">▸</b>
+  </div>
+  <div id="dgibox" style="position: fixed; top: 0px; right: 0px; min-width: 200px;">
+    <button style="float: right; outline: none; font: 14px/1.4 monospace; padding: 1em .8em; margin:0; background: none; color: inherit; border: none; font-weight: bold; cursor: pointer;" onclick="nx=this.nextElementSibling;nx.style.display=(nx.style.display=='none'?'block':'none');return false;">(i)</button>
+    <div id="dginfo" style="display: none; padding: 1px 1em; background: rgba(64,64,64,0.95);">
+      <p>DIGGER GAME</p>
+      <p><input type="checkbox" onchange="if(digsnd)digsnd(this.checked);return false;" checked style="vertical-align: middle; margin-left: 0;" id="aucon"> <label for="aucon">audio</label></p>
+      <p><a href="https://www.playok.com/">playok</a> <a href="http://www.digger.org/">about</a> <a href="digjs.zip">source</a>
+    </div>
+  </div>
+</body>
+</html>
