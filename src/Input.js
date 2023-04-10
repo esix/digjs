@@ -1,4 +1,4 @@
-
+// import * as Digger from "./Digger";
 
 var leftpressed=false,rightpressed=false,uppressed=false,downpressed=false,f1pressed=false,firepressed=false,minuspressed,pluspressed,f10pressed,escape=false;
 

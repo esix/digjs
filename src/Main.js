@@ -4,9 +4,12 @@ import * as Input from "./Input";
 import * as Scores from "./Scores";
 import * as Drawing from "./Drawing";
 import * as Sound from "./Sound";
+import * as Digger from "./Digger";
+import * as Bags from "./Bags";
+import * as Monster from "./Monster";
 
 
-function sleep(ms) {
+export function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 

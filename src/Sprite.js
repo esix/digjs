@@ -1,3 +1,5 @@
+import * as Pc from "./Pc";
+
 var retrflag = true;
 
 var sprrdrwf = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];	// [17]
@@ -254,5 +256,4 @@ export function setsprorder(newsprorder) {
   else
     sprorder = newsprorder;
 }
-
 

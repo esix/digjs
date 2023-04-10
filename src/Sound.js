@@ -173,7 +173,7 @@ export function musicoff() {
   musicp = 0;
 }
 
-function musicupdate() {
+export function musicupdate() {
   if (!musicplaying)
     return;
   if (noteduration != 0)
@@ -239,7 +239,7 @@ function musicupdate() {
     t0val = 0x7d00;
 }
 
-function setsoundmode() {
+export function setsoundmode() {
   spkrmode = wavetype;
   if (!soundt0flag && sndflag) {
     soundt0flag = true;
@@ -255,7 +255,7 @@ export function setsoundt2() {
   }
 }
 
-function sett0() {
+export function sett0() {
   if (sndflag) {
     timer2(t2val);
     if (t0val < 1000 && (wavetype == 1 || wavetype == 2))
@@ -285,7 +285,7 @@ export function sound1upoff() {
   sound1upflag = false;
 }
 
-function sound1upupdate() {
+export function sound1upupdate() {
   if (sound1upflag) {
     if (Math.floor(sound1upduration / 3) % 2 != 0)
       t2val = (sound1upduration << 2) + 600;
@@ -295,16 +295,16 @@ function sound1upupdate() {
   }
 }
 
-function soundbonus() {
+export function soundbonus() {
   soundbonusflag = true;
 }
 
-function soundbonusoff() {
+export function soundbonusoff() {
   soundbonusflag = false;
   soundbonusn = 0;
 }
 
-function soundbonusupdate() {
+export function soundbonusupdate() {
   if (soundbonusflag) {
     soundbonusn++;
     if (soundbonusn > 15)
@@ -316,18 +316,18 @@ function soundbonusupdate() {
   }
 }
 
-function soundbreak() {
+export function soundbreak() {
   soundbreakduration = 3;
   if (soundbreakvalue < 15000)
     soundbreakvalue = 15000;
   soundbreakflag = true;
 }
 
-function soundbreakoff() {
+export function soundbreakoff() {
   soundbreakflag = false;
 }
 
-function soundbreakupdate() {
+export function soundbreakupdate() {
   if (soundbreakflag)
     if (soundbreakduration != 0) {
       soundbreakduration--;
@@ -336,17 +336,17 @@ function soundbreakupdate() {
       soundbreakflag = false;
 }
 
-function soundddie() {
+export function soundddie() {
   soundddien = 0;
   soundddievalue = 20000;
   soundddieflag = true;
 }
 
-function soundddieoff() {
+export function soundddieoff() {
   soundddieflag = false;
 }
 
-function soundddieupdate() {
+export function soundddieupdate() {
   if (soundddieflag) {
     soundddien++;
     if (soundddien == 1)
@@ -361,18 +361,18 @@ function soundddieupdate() {
   }
 }
 
-function soundeatm() {
+export function soundeatm() {
   soundeatmduration = 20;
   soundeatmn = 3;
   soundeatmvalue = 2000;
   soundeatmflag = true;
 }
 
-function soundeatmoff() {
+export function soundeatmoff() {
   soundeatmflag = false;
 }
 
-function soundeatmupdate() {
+export function soundeatmupdate() {
   if (soundeatmflag)
     if (soundeatmn != 0) {
       if (soundeatmduration != 0) {
@@ -391,22 +391,22 @@ function soundeatmupdate() {
       soundeatmflag = false;
 }
 
-function soundem() {
+export function soundem() {
   soundemflag = true;
 }
 
-function soundemerald(n) {
+export function soundemerald(n) {
   emerfreq = emfreqs[n];
   soundemeraldduration = 7;
   soundemeraldn = 0;
   soundemeraldflag = true;
 }
 
-function soundemeraldoff() {
+export function soundemeraldoff() {
   soundemeraldflag = false;
 }
 
-function soundemeraldupdate() {
+export function soundemeraldupdate() {
   if (soundemeraldflag)
     if (soundemeraldduration != 0) {
       if (soundemeraldn == 0 || soundemeraldn == 1)
@@ -420,29 +420,29 @@ function soundemeraldupdate() {
       soundemeraldoff();
 }
 
-function soundemoff() {
+export function soundemoff() {
   soundemflag = false;
 }
 
-function soundemupdate() {
+export function soundemupdate() {
   if (soundemflag) {
     t2val = 1000;
     soundemoff();
   }
 }
 
-function soundexplode() {
+export function soundexplode() {
   soundexplodevalue = 1500;
   soundexplodeduration = 10;
   soundexplodeflag = true;
   soundfireoff();
 }
 
-function soundexplodeoff() {
+export function soundexplodeoff() {
   soundexplodeflag = false;
 }
 
-function soundexplodeupdate() {
+export function soundexplodeupdate() {
   if (soundexplodeflag)
     if (soundexplodeduration != 0) {
       soundexplodevalue = t2val = soundexplodevalue - (soundexplodevalue >> 3);
@@ -451,17 +451,17 @@ function soundexplodeupdate() {
       soundexplodeflag = false;
 }
 
-function soundfall() {
+export function soundfall() {
   soundfallvalue = 1000;
   soundfallflag = true;
 }
 
-function soundfalloff() {
+export function soundfalloff() {
   soundfallflag = false;
   soundfalln = 0;
 }
 
-function soundfallupdate() {
+export function soundfallupdate() {
   if (soundfallflag)
     if (soundfalln < 1) {
       soundfalln++;
@@ -477,17 +477,17 @@ function soundfallupdate() {
     }
 }
 
-function soundfire() {
+export function soundfire() {
   soundfirevalue = 500;
   soundfireflag = true;
 }
 
-function soundfireoff() {
+export function soundfireoff() {
   soundfireflag = false;
   soundfiren = 0;
 }
 
-function soundfireupdate() {
+export function soundfireupdate() {
   if (soundfireflag) {
     if (soundfiren == 1) {
       soundfiren = 0;
@@ -500,7 +500,7 @@ function soundfireupdate() {
   }
 }
 
-function soundgold() {
+export function soundgold() {
   soundgoldvalue1 = 500;
   soundgoldvalue2 = 4000;
   soundgoldduration = 30;
@@ -508,11 +508,11 @@ function soundgold() {
   soundgoldflag = true;
 }
 
-function soundgoldoff() {
+export function soundgoldoff() {
   soundgoldflag = false;
 }
 
-function soundgoldupdate() {
+export function soundgoldupdate() {
   if (soundgoldflag) {
     if (soundgoldduration != 0)
       soundgoldduration--;
@@ -530,7 +530,7 @@ function soundgoldupdate() {
   }
 }
 
-function soundint() {
+export function soundint() {
   timerclock++;
   if (soundflag && !sndflag)
     sndflag = musicflag = true;
@@ -568,8 +568,7 @@ function soundint() {
   }
 }
 
-async function soundlevdone() {
-
+export async function soundlevdone() {
   var timer = 0;
   soundstop();
   nljpointer = 0;
@@ -602,7 +601,7 @@ export function soundlevdoneloop() {
   return soundlevdoneflag;
 }
 
-function soundlevdoneoff() {
+export function soundlevdoneoff() {
   soundlevdoneflag = soundpausedflag = false;
 }
 
@@ -729,7 +728,7 @@ var t0rate, t2rate, t2new, t0v = 0, t2v = 0;	// uint4
 var t2sw;	// bool
 
 
-function setupsound() {
+export function setupsound() {
   inittimer();
   Digger.time_w(0);
   startint8();
@@ -737,7 +736,7 @@ function setupsound() {
   //initsounddevice();	// fix
 }
 
-function killsound() {
+export function killsound() {
   setsoundt2();
   timer2(40);
   stopint8();
@@ -825,7 +824,7 @@ function initint8() {
 function restoreint8() {
 }
 
-function soundoff() {
+export function soundoff() {
   s2soundoff();
 }
 
@@ -860,7 +859,6 @@ function inittimer() {
 //
 
 function jsinitsound() {
-
   var acon, anode;
 
   if ('AudioContext' in window)
@@ -894,52 +892,5 @@ function jsinitsound() {
     austart();
     window.fuinput = null;
   }
-
 }
 
-/*
-return {
-setupsound: setupsound,
-killsound: killsound,
-soundoff: soundoff,
-
-musicupdate: musicupdate,
-
-setsoundmode: setsoundmode,
-sett0: sett0,
-sound1upupdate: sound1upupdate,
-soundbonus: soundbonus,
-soundbonusoff: soundbonusoff,
-soundbonusupdate: soundbonusupdate,
-soundbreak: soundbreak,
-soundbreakoff: soundbreakoff,
-soundbreakupdate: soundbreakupdate,
-soundddie: soundddie,
-soundddieoff: soundddieoff,
-soundddieupdate: soundddieupdate,
-soundeatm: soundeatm,
-soundeatmoff: soundeatmoff,
-soundeatmupdate: soundeatmupdate,
-soundem: soundem,
-soundemerald: soundemerald,
-soundemeraldoff: soundemeraldoff,
-soundemeraldupdate: soundemeraldupdate,
-soundemoff: soundemoff,
-soundemupdate: soundemupdate,
-soundexplode: soundexplode,
-soundexplodeoff: soundexplodeoff,
-soundexplodeupdate: soundexplodeupdate,
-soundfall: soundfall,
-soundfalloff: soundfalloff,
-soundfallupdate: soundfallupdate,
-soundfire: soundfire,
-soundfireoff: soundfireoff,
-soundfireupdate: soundfireupdate,
-soundgold: soundgold,
-soundgoldoff: soundgoldoff,
-soundgoldupdate: soundgoldupdate,
-soundint: soundint,
-soundlevdone: soundlevdone,
-soundlevdoneoff: soundlevdoneoff,
-}
-*/

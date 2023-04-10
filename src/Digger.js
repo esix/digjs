@@ -3,12 +3,18 @@ import * as Main from "./Main";
 import * as Pc from "./Pc";
 import * as Sprite from "./Sprite";
 import * as Drawing from "./Drawing";
+import * as Bags from "./Bags";
+import * as Scores from "./Scores";
+import * as Sound from "./Sound";
+import * as Monster from "./Monster";
 
 var dctx, dcnv;
 
 var MAX_RATE = 200, MIN_RATE = 40;
 
-var width = 320, height = 200, frametime = 66;
+
+export const frametime = 66;
+var width = 320, height = 200;
 
 var gctx, gcnv, gcty, gimg, gpix, dcont, dwadj = 0, dhadj = 0;
 
@@ -197,7 +203,7 @@ export async function drawemeralds() {
         Drawing.drawemerald(x * 20 + 12, y * 18 + 21);
     }
     newframe();  //js
-    await sleep(12);
+    await Main.sleep(12);
   }
 }
 
@@ -750,7 +756,7 @@ export const diggerx_r = function() { return diggerx; }
 export const diggery_r = function() { return diggery; }
 export const digonscr_r = function() { return digonscr; }
 export const digtime_w = function(x) { digtime = x; }
-export const atmsc_r = function() { return eatmsc; }
+export const eatmsc_r = function() { return eatmsc; }
 export const eatmsc_w = function(x) { eatmsc = x; }
 export const time_w = function(x) { curtime = x; }
 

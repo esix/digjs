@@ -1,8 +1,10 @@
 import * as Digger from "./Digger";
+import * as cgagrafx from "./cgagrafx";
+import * as alpha from "./alpha";
 
 var width = 320, height = 200;
 
-var pixels = new Array(65536 / 4);
+export var pixels = new Array(65536 / 4);
 var curpal = 0;
 
 var pals = [
@@ -16,7 +18,7 @@ var pals = [
     [0, 0x64, 0x64, 0x64]]];
 
 
-function gclear() {
+export function gclear() {
   var lpix = Digger.getgpix();
   for (var i = 0, l = (width * height) >> 2; i < l; i++)
     pixels[i] = 0;
@@ -28,15 +30,15 @@ function gclear() {
   }
 }
 
-function gethrt() {
+export function gethrt() {
   return Date.now();
 }
 
-function getkips() {
+export function getkips() {
   return 0;		// phony
 }
 
-function ggeti(x, y, p, w, h) {
+export function ggeti(x, y, p, w, h) {
 
   var src = 0;
   var dest = (y * width + x) >> 2;
@@ -53,14 +55,14 @@ function ggeti(x, y, p, w, h) {
 
 }
 
-function ggetpix(x, y) {
+export function ggetpix(x, y) {
   return pixels[(width * y + x) >> 2];
 }
 
-function ginit() {
+export function ginit() {
 }
 
-function ginten(inten) {
+export function ginten(inten) {
   if (curpal == inten & 1)
     return;
   curpal = inten & 1;
@@ -78,14 +80,13 @@ function ginten(inten) {
 
 }
 
-function gpal(pal) {
+export function gpal(pal) {
 }
 
-/*function gputi (x, y, p, w, h) {
+/*export function gputi (x, y, p, w, h) {
 	gputi (x, y, p, w, h, true);
 } */
-function gputi(x, y, p, w, h, b = true) {
-
+export function gputi(x, y, p, w, h, b = true) {
   var src = 0;
   var dest = (y * width + x) >> 2;
   var lpix = Digger.getgpix(), pal = pals[curpal];
@@ -106,11 +107,9 @@ function gputi(x, y, p, w, h, b = true) {
     }
     dest += width >> 2;
   }
-
 }
 
-function gputim(x, y, ch, w, h) {
-
+export function gputim(x, y, ch, w, h) {
   var spr = cgagrafx.cgatable[ch * 2];
   var msk = cgagrafx.cgatable[ch * 2 + 1];
 
@@ -163,11 +162,9 @@ function gputim(x, y, ch, w, h) {
     }
     dest += width >> 2;
   }
-
 }
 
-function gtitle() {
-
+export function gtitle() {
   var src = 0, dest = 0, plus = 0;  //, ld = 0
   var lpix = Digger.getgpix(), pal = pals[curpal];
 
@@ -214,10 +211,10 @@ function gtitle() {
 
 }
 
-/*function gwrite (x, y, ch, c) {
+/*export function gwrite (x, y, ch, c) {
 	gwrite (x, y, ch, c, false);
 }*/
-function gwrite(x, y, ch, c, upd = false) {
+export function gwrite(x, y, ch, c, upd = false) {
   c &= 3;
   var dest = (y * width + x) >> 2, ofs = 0, color = c | c << 2 | c << 4 | c << 6;
   var lpix = Digger.getgpix(), pal = pals[curpal];
@@ -246,23 +243,4 @@ function gwrite(x, y, ch, c, upd = false) {
     }
     dest += width >> 2;
   }
-
 }
-
-module.exports = {
-
-  gclear: gclear,
-  gethrt: gethrt,
-  getkips: getkips,
-  ggeti: ggeti,
-  ggetpix: ggetpix,
-  ginit: ginit,
-  ginten: ginten,
-  gpal: gpal,
-  gputi: gputi,
-  gputim: gputim,
-  gtitle: gtitle,
-  gwrite: gwrite,
-  pixels: pixels
-};
-

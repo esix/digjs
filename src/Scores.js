@@ -1,3 +1,8 @@
+import * as Drawing from "./Drawing";
+import * as Main from "./Main";
+import * as Digger from "./Digger";
+import * as Pc from "./Pc";
+
 var highbuf = new Array(10);	// char
 var scorehigh = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];	// [12]
 var scoreinit = new Array(11);	//string
@@ -189,7 +194,7 @@ function savescores() {
   window.localStorage.setItem("ds", st);
 }
 
-function numtostring(n) {
+export function numtostring(n) {
   var x;
   var p = "";
   for (x = 0; x < 6; x++) {
@@ -205,28 +210,28 @@ function numtostring(n) {
   return p;
 }
 
-function scorebonus() {
+export function scorebonus() {
   addscore(1000);
 }
 
-function scoreeatm() {
+export function scoreeatm() {
   addscore(Digger.eatmsc_r() * 200);
   Digger.eatmsc_w(Digger.eatmsc_r() << 1);
 }
 
-function scoreemerald() {
+export function scoreemerald() {
   addscore(25);
 }
 
-function scoregold() {
+export function scoregold() {
   addscore(500);
 }
 
-function scorekill() {
+export function scorekill() {
   addscore(250);
 }
 
-function scoreoctave() {
+export function scoreoctave() {
   addscore(250);
 }
 
@@ -241,7 +246,7 @@ export function showtable() {
   }
 }
 
-function shufflehigh() {
+export function shufflehigh() {
   var i, j;
   for (j = 10; j > 1; j--)
     if (scoret < scorehigh[j])
@@ -263,7 +268,7 @@ export function writecurscore(bp6) {
     writenum(score2, 248, 0, 6, bp6);
 }
 
-function writenum(n, x, y, w, c) {
+export function writenum(n, x, y, w, c) {
   var d, xp = (w - 1) * 12 + x;
   while (w > 0) {
     d = (n % 10);
@@ -283,15 +288,3 @@ export function zeroscores() {
   nextbs2 = bonusscore;
 }
 
-//
-// return {
-// numtostring: numtostring,
-// scorebonus: scorebonus,
-// scoreeatm: scoreeatm,
-// scoreemerald: scoreemerald,
-// scoregold: scoregold,
-// scorekill: scorekill,
-// scoreoctave: scoreoctave,
-// shufflehigh: shufflehigh,
-// writenum: writenum,
-// }

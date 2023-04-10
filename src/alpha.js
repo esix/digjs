@@ -1,5 +1,4 @@
 
-var alpha = (function() {
 
 var copyright = "Portions Copyright(c) 1983 Windmill Software Inc.";
 
@@ -555,9 +554,9 @@ var cgasymspace = [
   0x00,0x00,0x00,
   0x00,0x00,0x00];
 
-return {
 
-  ascii2cga : [	// [0x5f], short
+
+export const ascii2cga =  [	// [0x5f], short
   cgasymspace,null,null,null,null,null,null,null,null,null,null,null,null,null,cgasymdot,null,     /*  !"#$%&'()*+,-./ */
   cganum0,cganum1,cganum2,cganum3,cganum4,cganum5,cganum6,        /* 0123456 */
   cganum7,cganum8,cganum9,null,null,null,null,null,null,null,cgaletA,cgaletB,     /* 789:;<=>?:AB */
@@ -569,8 +568,4 @@ return {
   cgaletI,cgaletJ,cgaletK,cgaletL,cgaletM,cgaletN,cgaletO,        /* ijklmno */
   cgaletP,cgaletQ,cgaletR,cgaletS,cgaletT,cgaletU,cgaletV,        /* pqrstuv */
   cgaletW,cgaletX,cgaletY,cgaletZ,null,null,null,null ]                      /* wxyz{|}~ */
-
-}  
-  
-}());
 

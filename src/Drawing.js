@@ -1,6 +1,7 @@
 import * as Sprite from "./Sprite";
 import * as Digger from "./Digger";
 import * as Main from "./Main";
+import * as Pc from "./Pc";
 
 var field1 = [	// [150]
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -99,7 +100,7 @@ export async function drawbackg(l) {
     for (x = 0; x < 320; x += 20)
       Sprite.drawmiscspr(x, y, 93 + l, 5, 4);
     Digger.newframe(); //js
-    await sleep(12);
+    await Main.sleep(12);
   }
 }
 
@@ -170,9 +171,8 @@ export async function drawfield() {
           if ((field[(y + 1) * 15 + x] & 0xfdf) != 0xfdf)
             drawbottomblob(xp, yp);
         Digger.newframe(); //js
-        await sleep(18);
+        await Main.sleep(18);
       }
-
     }
 }
 
